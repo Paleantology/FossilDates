@@ -43,7 +43,7 @@ def pull_data_taxon(fossil_df, tax_unit_outfile, **kwargs):
 					num_key = kwargs["fraction"]
 					oldest_df = fossil_df.groupby(group_key).apply(lambda x: x.nsmallest(round(len(x)*float(num_key)), 'max_ma'))[["taxon","max_ma", group_key]]
 					oldest_df.to_csv(tax_unit_outfile, sep="\t", index=False)
-					oldest_df = oldest_df.drop(group_key, axis=1) 
+					oldest_df = oldest_df.drop(group_key, axis=1, sort=True) 
 					oldest_df = oldest_df.drop_duplicates()
 					oldest_df[["taxon","age"]] = oldest_df[["taxon","max_ma"]]
 					sample_df = oldest_df.drop("max_ma", axis=1) 
@@ -192,8 +192,9 @@ def make_taxon_set(names_df, rb_file, **kwargs):
 	for key, value in nl_dict.items():
 		for item in value:
 			item = item.strip()
-		sentence = key + " = clade(\"" + "\",\"".join(value) + "\")" + "\n"
-		lines.append(sentence)
+			sentence = key + " = clade(\"" + "\",\"".join(value) + "\")" + "\n"
+			lines.append(sentence)
+	lines=set(lines)
 	tax_list = "constraints=v(" + ",".join(str(x) for x in nl_dict.keys()) + ")"
 	try:
 		outfile = open(new_file_name,'r+')
