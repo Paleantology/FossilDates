@@ -1,4 +1,4 @@
-SpecimenName	min_yr	max_yr
+taxon	min	max
 Acanthognathus poinari	13.82	20.44
 Acanthostichus hispaniolicus	13.82	20.44
 Afropone oculata	89.8	93.9
@@ -15,3 +15,16 @@ Eulithomyrmex rugosus	33.9	37.2
 Formicium berryi	38.	41.3
 Paraponera dieteri	13.82	20.44
 Pseudomyrmex extinctus	33.9	37.2
+Brownimecia_clavata	89.8	93.9
+Camelomecia_janovitzi	98.17	99.41
+Gerontoformica_gracilis	93.5	99.6
+Gerontoformica_magnus	93.5	99.6
+Gerontoformica_pilosus	93.5	99.6
+Gerontoformica_spiralis	93.5	99.6
+Haidomyrmex_scimitarus	93.5	99.6
+Haidomyrmodes_mammuthus	98.0	100.0
+Haidoterminus_cippus	78.0	79.0
+Kyromyrma	89.8	93.9
+Myanmyrma_gracilis	93.5	99.6
+Sphecomyrma_freyi	79.0	92.0
+Zigrasimecia	98.17	99.41
