@@ -1,7 +1,7 @@
 taxon	age	Fossil	min_yr	max_yr
 Acanthoponera_minor	0	Current	0	0
 Amblyopone_pallipes	0	Current	0	0
-Aneuretus	0	Current	0	0
+Aneuretus_sp	0	Current	0	0
 Anomalomyrma_sp	0	Current	0	0
 Apomyrma_stygia	0	Current	0	0
 Brownimecia_clavata	93.9	X	89.8	93.9
@@ -17,9 +17,9 @@ Gerontoformica_spiralis	99.6	X	93.5	99.6
 Haidomyrmex_scimitarus	99.6	X	93.5	99.6
 Haidomyrmodes_mammuthus	105.3	X	98	100
 Haidoterminus_cippus	83.5	X	78	79
-Heterogyna	0	Current	0	0
+Heterogyna_sp	0	Current	0	0
 Hypoponera_opacior	0	Current	0	0
-Kyromyrma	0	X	89.8	93.9
+Kyromyrma_sp	92	X	89.8	93.9
 Lasius_californicus	0	Current	0	0
 Leptanilla_swani	0	Current	0	0
 Leptanilloides_nomada	0	Current	0	0
@@ -39,7 +39,7 @@ Scolia_verticalis	0	Current	0	0
 Sphecomyrma_freyi	93.9	X	79	92
 Tatuidris_tatusia	0	Current	0	0
 Tetraponera_punctulata	0	Current	0	0
-Zigrasimecia	0	X	98.17	99.41
+Zigrasimecia_sp	9.5	X	98.17	99.41
 Adetomyrma_sp.	0	Current	0	0
 Amblyopone_armigera	0	Current	0	0
 Amblyopone_australis	0	Current	0	0
