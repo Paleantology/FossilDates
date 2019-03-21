@@ -1,7 +1,7 @@
 ################################################################################
 #
 # RevBayes Example: Total-evidence dating under the fossilized birth-death model
-# 
+#
 # This file: Runs the full MCMC ...
 #
 # authors: Tracy A. Heath, Walker C. Pett, April M. Wright
@@ -15,12 +15,12 @@ seed(1234)
 # Create the full list of taxa (including all fossils and extant species #
 taxa <- readTaxonData("Data/final_tip_ages.tsv")
 
-filenames <- v("Data/Mol/18s.aln.nex", "Data/Mol/28s.aln.nex", "Data/Mol/ABD.aln.nex") #, 
-#"Data/Mol/Arg.aln.nex", "Data/Mol/CAD.aln.nex", "Data/Mol/EF1.aln.nex", "Data/Mol/EF2.aln.nex",
-#"Data/Mol/lg.aln.nex")
-                                                             
-n_data_subsets <- filenames.size()                            
-for (i in 1:n_data_subsets) {                                 
+filenames <- v("Data/Mol/18s.aln.nex", "Data/Mol/28s.aln.nex", "Data/Mol/ABD.aln.nex",
+"Data/Mol/Arg.aln.nex", "Data/Mol/CAD.aln.nex", "Data/Mol/EF1.aln.nex", "Data/Mol/EF2.aln.nex",
+"Data/Mol/lg.aln.nex")
+
+n_data_subsets <- filenames.size()
+for (i in 1:n_data_subsets) {
    data[i] = readDiscreteCharacterData(filenames[i])
 }
 
@@ -29,10 +29,10 @@ for (i in 1:n_data_subsets) {
 morpho <- readDiscreteCharacterData("Data/Morph/AntMegaMatrixMinusAmbig.nex")
 
 # Add the missing taxa to each data partition #
-for (i in 1:n_data_subsets) {                                 
+for (i in 1:n_data_subsets) {
     data[i].addMissingTaxa( taxa )
 }
-       
+
 morpho.addMissingTaxa( taxa )
 
 ## helpers
@@ -66,7 +66,7 @@ monitors[mni++] = mnModel(filename="output/ants.log", printgen=10)
 monitors[mni++] = mnFile(filename="output/ants.trees", printgen=10, fbd_tree)
 # 3. and a few select parameters to be printed to the screen #
 monitors[mni++] = mnScreen(printgen=10, num_samp_anc, origin_time)
-
+monitors[mni++] = mnStochasticVariable(filename="mcmc-stoch.log", printgen=10)
 # Initialize the MCMC object #
 mymcmc = mcmc(mymodel, monitors, moves)
 
