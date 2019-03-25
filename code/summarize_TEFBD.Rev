@@ -3,4 +3,4 @@
 trace = readTreeTrace("output/bears.trees")
 
 # Summarize tree trace and save MCC tree to file
-mccTree(trace, file="output/bears.mcc.tre" )
+mccTree(trace, file="output/ants.mcc.tre" )

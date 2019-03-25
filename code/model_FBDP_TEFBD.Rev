@@ -72,7 +72,7 @@ moves[mvi++] = mvRootTimeSlideUniform(fbd_tree, origin_time, weight=5.0)
 
 ### Use stratigraphic range data to explicitly sample the fossil occurence times ###
 # Read in the stratigraphic range data file #
-intervals = readDataDelimitedFile(file="Data/foss_int.tsv", header=true)
+intervals = readDataDelimitedFile(file="../Data/foss_int.tsv", header=true)
 
 # Setup the fossil tip sampling #
 # Use a for loop to create a uniform distribution on the occurence time for each fossil #
