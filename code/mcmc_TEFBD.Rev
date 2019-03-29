@@ -41,13 +41,13 @@ n_taxa <- taxa.size()
 
 # Load the model files
 
-source("../code/model_FBDP_TEFBD.Rev") # FBD tree prior
+source("model_FBDP_TEFBD.Rev") # FBD tree prior
 
-source("../code/model_UExp_TEFBD.Rev") # UExp relaxed clock
+source("model_UExp_TEFBD.Rev") # UExp relaxed clock
 
-source("../code/model_GTRG_TEFBD.Rev") # Molecular substitution model (GTR+G)
+source("model_GTRG_TEFBD.Rev") # Molecular substitution model (GTR+G)
 
-source("../code/model_Morph_TEFBD.Rev") # Morphological character change model
+source("model_Morph_TEFBD.Rev") # Morphological character change model
 
 
 ########
@@ -71,10 +71,10 @@ monitors[mni++] = mnScreen(printgen=10, num_samp_anc, origin_time)
 
 # Initialize the MCMC object #
 mymcmc = mcmc(mymodel, monitors, moves)
-trace = readStochasticVariableTrace(file="../output/mcmc-stoch.log")
-mymcmc.initializeFromTrace(trace)
+#trace = readStochasticVariableTrace(file="../output/mcmc-stoch.log")
+#mymcmc.initializeFromTrace(trace)
 # Run the MCMC #
-mymcmc.run(generations=10000)
+mymcmc.run(generations=100000)
 
 # Quit RevBayes #
 q()
