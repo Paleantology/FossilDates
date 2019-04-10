@@ -1,7 +1,5 @@
 import pandas as pd
-import numpy as np
-from numpy 
-import random
+from numpy import random
 import argparse 
 
 
@@ -12,8 +10,8 @@ def taxon_sample(df, group_rank):
     return(samp)
 
 def final_ages(tax_samp):
-    morph_temp = pd.read_csv(morph_temp, sep='\t')
-    mol_temp = (mol_temp, sep='\t')
+    morph_temp = (morph_temp)
+    mol_temp = (mol_temp)
     morph_temp = morph_temp[['taxon', 'age']]
     tax_samp = tax_samp[['SpecimenName', 'max_yr']]
     tax_samp.columns = ['taxon', 'age']
@@ -42,18 +40,20 @@ if __name__ == '__main__':
     #if args.sample:
         #tip_age = sample
     if args.morph:
-        morph_temp = morph
+        morph_temp = args.morph
     if args.mol:
-        mol_temp = mol
-    if args.group_rak:
-        group_rank = group_rank
+        mol_temp = args.mol
+    if args.group_rank:
+        group_rank = args.group_rank
     if args.df:
-        df = df
+        df = args.df
 
     #morph_temp = pd.read_csv("./Data/taxa_template.tsv", sep='\t')
     #mol_temp = pd.read_csv("./Data/Mol/mol_df.tsv", sep='\t')
     
-    
+    morph_temp = pd.read_csv(morph_temp, sep='\t')
+    mol_temp = pd.read_csv(mol_temp, sep='\t')
+
     tax_samp = taxon_sample(df, group_rank)
     final_tip_age = final_ages(tax_samp)
     final_tip_age.to_csv("Data/accessory/final_tip_age.tsv", sep = '\t', index=False)
