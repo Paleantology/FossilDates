@@ -1,5 +1,5 @@
 #########################################
-python IntervalSampler.py --df "../Data/higher_taxa.csv" --group_rank "SubFamily" --s_of "../Data/stacked_data_2.csv"
+#python IntervalSampler.py --df "../Data/higher_taxa.csv" --group_rank "SubFamily" --s_of "../Data/stacked_data_2.csv"
 #########################################
 
 
