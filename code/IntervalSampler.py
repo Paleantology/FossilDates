@@ -68,27 +68,4 @@ if __name__ == '__main__':
     final_tip_age.to_csv(args.fta_of, sep = '\t', index=False)
     stacked = foss_int(tax_samp, final_tip_age)
     stacked.to_csv(stacked_of, sep='\t', index =False)
-    
 
-    #df = pd.read_csv(df_i, header=None, sep='\t')
-    #group_rank = group_rank_i
-    #morph_temp = pd.read_csv(morph_temp_df, sep='\t')
-    #mol_temp = pd.read_csv(mol_temp_df, sep='\t')
-    #stacked_of = s_of
-    #final_tip_age_of = fta_of
-
-    #samp = taxon_sample(df, group_rank)
-    #final_tip_age = final_ages(mol_temp, morph_temp)
-    #stacked = fossil_int(tax_samp)
-    print("welp.")
-    #final_tip_age.to_csv(fta_of, sep = '\t', index=False)
-    #"Data/accessory/final_tip_age.tsv"
-    #stacked = foss_int(tax_samp)
-    #stacked.to_csv(s_of, sep='\t', index =False)
-    #"Data/accessory/foss_int.tsv"
-
-    #morph_temp = pd.read_csv("./Data/taxa_template.tsv", sep='\t')
-    #mol_temp = pd.read_csv("./Data/Mol/mol_df.tsv", sep='\t')
-    
-    #morph_temp = pd.read_csv(morph_temp, sep='\t')
-    #mol_temp = pd.read_csv(mol_temp, sep='\t')
