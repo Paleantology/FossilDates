@@ -61,17 +61,17 @@ mni = 1
 
 # Create a vector of monitors #
 # 1. for the full model #
-monitors[mni++] = mnModel(filename="output/antsTyler.log", printgen=100)
-monitors[mni++] = mnStochasticVariable(filename="output/Tylermcmc-stoch.log", printgen=100)
+monitors[mni++] = mnModel(filename="output/antschristina.log", printgen=100)
+monitors[mni++] = mnStochasticVariable(filename="output/christinamcmc-stoch.log", printgen=100)
 
 # 2. the tree #
-monitors[mni++] = mnFile(filename="output/antsTyler.trees", printgen=100, fbd_tree)
+monitors[mni++] = mnFile(filename="output/antschristina.trees", printgen=100, fbd_tree)
 # 3. and a few select parameters to be printed to the screen #
 monitors[mni++] = mnScreen(printgen=100, num_samp_anc, origin_time)
 
 # Initialize the MCMC object #
 mymcmc = mcmc(mymodel, monitors, moves)
-trace = readStochasticVariableTrace(file="output/Tylermcmc-stoch.log")
+trace = readStochasticVariableTrace(file="output/christinamcmc-stoch.log")
 mymcmc.initializeFromTrace(trace)
 # Run the MCMC #
 mymcmc.run(generations=10000)
