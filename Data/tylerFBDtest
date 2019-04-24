@@ -1,0 +1,35 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=24:00:00
+#PBS -N FBD 
+#PBS -o FBD.out
+#PBS -j oe
+#PBS -A loni_antlabsumm 
+#PBS -m abe
+#PBS -M april.wright@selu.edu   
+
+
+module load gcc
+
+(datapath=/work/amwright/FossilDates/Data/1
+cd $datapath
+~/rb mcmc_tylertest.Rev) 
+
+(datapath=/work/amwright/FossilDates/Data/2
+cd $datapath
+mpirun -np 20 ~/rb-mpi mcmc_tylertest.Rev) &
+
+(datapath=/work/amwright/FossilDates/Data/3
+cd $datapath
+mpirun -np 20 ~/rb-mpi mcmc_tylertest.Rev) &
+
+(datapath=/work/amwright/FossilDates/Data/4
+cd $datapath
+mpirun -np 20 ~/rb-mpi mcmc_tylertest.Rev) &
+
+(datapath=/work/amwright/FossilDates/Data/5
+cd $datapath
+mpirun -np 20 ~/rb-mpi mcmc_tylertest.Rev) 
+
+
