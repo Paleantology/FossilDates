@@ -22,6 +22,17 @@ def taxa_file(group_rank, name_column, min_column, max_column, new_taxon_column_
     tip_age.columns = [new_taxon_column_name, new_age_column]
     tip_age.to_csv(samp_outpath, sep='\t', index =False)
     return(tip_age)
+    
+def get_constraints(samp, group_rank, molecular_data):
+    l_ol = []
+    working = []
+    df = pd.read_csv(molecular_data)
+    mol_groups = df.groupby(group_rank, as_index=True)
+    for index, row in samp.iterrows():
+        for group in mol_groups:
+            if index[0] == group[0]:
+                l_ol.append([index[0], group[1]['Specimen'].tolist()])
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -29,6 +40,8 @@ if __name__ == "__main__":
     parser.add_argument("--group_rank", help = "rank that will be groupedby and used for sampling 1 specimen from each rank")
     parser.add_argument("--int_outpath", help = "fossil_int tsv outpath")
     parser.add_argument("--samp_outpath", help = "random_sample tsv outpath")
+    parser.add_argument("--molecular_data", help = "molecular data for clade constraints")
+    
     args = parser.parse_args()
     if args.df:
         df = args.df
@@ -38,6 +51,9 @@ if __name__ == "__main__":
         int_outpath = args.int_outpath
     if args.samp_outpath:
         samp_outpath = args.samp_outpath
+    if args.molecular_data:
+        molecular_data = args.molecular_data
 
-taxon_sample(df, group_rank)
-taxa_file(group_rank, 'SpecimenName', 'min_yr', 'max_yr', 'taxon', 'age')
+    samp = taxon_sample(df, group_rank)
+    taxa_file(group_rank, 'SpecimenName', 'min_yr', 'max_yr', 'taxon', 'age')
+    get_constraints(samp, group_rank, molecular_data)
