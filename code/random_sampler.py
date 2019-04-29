@@ -9,7 +9,6 @@ import argparse
 
 def taxon_sample(df, group_rank):
     df = pd.read_csv(df)
-    df = df.dropna(axis=0)
     samp = df.groupby(group_rank).apply(lambda x: x.sample(n=1, replace = False, axis=0))
     return(samp)
 
