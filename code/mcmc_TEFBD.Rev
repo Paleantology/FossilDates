@@ -13,7 +13,7 @@
 #######################
 seed(1234)
 # Create the full list of taxa (including all fossils and extant species #
-taxa <- readTaxonData("../Data/final_tip_ages.tsv")
+taxa <- readTaxonData("taxa.tsv")
 
 filenames <- v("../Data/Mol/18s.aln.nex", "../Data/Mol/28s.aln.nex", "../Data/Mol/ABD.aln.nex",
 "../Data/Mol/Arg.aln.nex", "../Data/Mol/CAD.aln.nex", "../Data/Mol/EF1.aln.nex", "../Data/Mol/EF2.aln.nex",
@@ -41,7 +41,7 @@ n_taxa <- taxa.size()
 
 # Load the model files
 
-source("model_FBDP_TEFBD.Rev") # FBD tree prior
+source("model_FBDP_TEFBD_final.Rev") # FBD tree prior
 
 source("model_UExp_TEFBD.Rev") # UExp relaxed clock
 
@@ -61,17 +61,17 @@ mni = 1
 
 # Create a vector of monitors #
 # 1. for the full model #
-monitors[mni++] = mnModel(filename="../output/ants.log", printgen=10)
+monitors[mni++] = mnModel(filename="output/ants.log", printgen=10)
 monitors[mni++] = mnStochasticVariable(filename="../output/mcmc-stoch.log", printgen=10)
 
 # 2. the tree #
-monitors[mni++] = mnFile(filename="../output/ants.trees", printgen=10, fbd_tree)
+monitors[mni++] = mnFile(filename="output/ants.trees", printgen=10, fbd_tree)
 # 3. and a few select parameters to be printed to the screen #
 monitors[mni++] = mnScreen(printgen=10, num_samp_anc, origin_time)
 
 # Initialize the MCMC object #
 mymcmc = mcmc(mymodel, monitors, moves)
-#trace = readStochasticVariableTrace(file="../output/mcmc-stoch.log")
+#trace = readStochasticVariableTrace(file="output/mcmc-stoch.log")
 #mymcmc.initializeFromTrace(trace)
 # Run the MCMC #
 mymcmc.run(generations=100000)

@@ -10,18 +10,20 @@ import argparse
 def taxon_sample(df, group_rank):
     df = pd.read_csv(df)
     samp = df.groupby(group_rank).apply(lambda x: x.sample(n=1, replace = False, axis=0))
+    print(samp)
     return(samp)
 
-def taxa_file(group_rank, name_column, min_column, max_column, new_taxon_column_name, new_age_column):
+def taxa_file(df, group_rank, name_column, min_column, max_column, new_taxon_column_name, new_age_column):
     grouped = taxon_sample(df, group_rank)
     new_group = grouped[[name_column, min_column, max_column]]
     fossil_int = new_group[[name_column, min_column, max_column]]
     fossil_int.columns = [new_taxon_column_name, min_column, max_column]
     fossil_int.to_csv(int_outpath, sep='\t', index=False)
-    tip_age = grouped[[name_column, max_column]]
+    
+    tip_age = new_group[[name_column, max_column]]
     tip_age.columns = [new_taxon_column_name, new_age_column]
     tip_age.to_csv(samp_outpath, sep='\t', index =False)
-    return(tip_age)
+    return(grouped)
     
 def get_constraints(samp, group_rank, molecular_data):
     l_ol = []
@@ -31,9 +33,15 @@ def get_constraints(samp, group_rank, molecular_data):
     for index, row in samp.iterrows():
         for group in mol_groups:
             if index[0] == group[0]:
-                l_ol.append([index[0], group[1]['Specimen'].tolist()])
-
-
+                l_ol.append([index[0], group[1]['specimen'].tolist()])     
+    for item in l_ol:
+        working.append(('{} =clade( "{}" ) \n'.format(item[0], ['", "'.join(i) for i in item[1:]])))
+    with open('clades', 'w') as f:
+        for item in working:
+            f.write(item)
+    
+    
+    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--df", help = "Datafile of taxa information requiring rank, max age, min age, ")
@@ -54,6 +62,5 @@ if __name__ == "__main__":
     if args.molecular_data:
         molecular_data = args.molecular_data
 
-    samp = taxon_sample(df, group_rank)
-    taxa_file(group_rank, 'SpecimenName', 'min_yr', 'max_yr', 'taxon', 'age')
+    samp = taxa_file(df, group_rank, 'SpecimenName', 'min_yr', 'max_yr', 'taxon', 'age')
     get_constraints(samp, group_rank, molecular_data)
