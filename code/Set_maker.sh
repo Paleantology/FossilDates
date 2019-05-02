@@ -1,4 +1,4 @@
-for i in {1..1}
+for i in {11..50}
 do
 python code/random_sampler.py --df Data/accessory/higher_taxa.csv --int_outpath int.tsv --samp_outpath samp.tsv --group_rank subfamily --molecular_data Data/Mol/mol_df.csv
 cat int.tsv Data/accessory/interval_template.tsv > $i/intervals.tsv
