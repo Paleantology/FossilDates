@@ -5,8 +5,6 @@ Afromyrma_petrosa,Myrmicinae,,Afromyrma
 Afropone_oculata,Ponerinae,,Afropone
 Afropone_orapa,Ponerinae,,Afropone
 Agastomyrma_laticeps,Myrmicinae,,Agastomyrma
-Alloiomma_changweiensis,Dolichoderinae,,Alloiomma
-Alloiomma_differentialis,Dolichoderinae,,Alloiomma
 Anochetus_ambiguus,Ponerinae,Ponerini,Anochetus
 Anochetus_brevidentatus,Ponerinae,Ponerini,Anochetus
 Anochetus_conisquamis,Ponerinae,Ponerini,Anochetus
@@ -76,7 +74,6 @@ Camponotus_shanwangensis,Formicinae,Camponotini,Camponotus
 Camponotus_ullrichi,Formicinae,Camponotini,Camponotus
 Camponotus_vehemens,Formicinae,Camponotini,Camponotus
 Camponotus_vetus,Formicinae,Camponotini,Camponotus
-Cananeuretus_occidentalis,Aneuretinae,,Cananeuretus
 Canapone_dentata,Ectatomminae,,Canapone
 Carebara_antiqua,Myrmicinae,Crematogastrini,Carebara
 Carebara_bohemica,Myrmicinae,Crematogastrini,Carebara
@@ -84,9 +81,7 @@ Carebara_rugiceps,Myrmicinae,Crematogastrini,Carebara
 Carebara_schossnicensis,Myrmicinae,Crematogastrini,Carebara
 Carebara_sophiae,Myrmicinae,Crematogastrini,Carebara
 Carebara_thorali,Myrmicinae,Crematogastrini,Carebara
-Casaleia_eocenica,Amblyoponinae,,Casaleia
 Casaleia_longiventris,Amblyoponinae,,Casaleia
-Casaleia_orientalis,Amblyoponinae,,Casaleia
 Cataulacus_planiceps,Myrmicinae,Crematogastrini,Cataulacus
 Cataulacus_plebeius,Myrmicinae,Crematogastrini,Cataulacus
 Cataulacus_silvestrii,Myrmicinae,Crematogastrini,Cataulacus
@@ -110,12 +105,6 @@ Cyrtopone_microcephala,Ponerinae,,Cyrtopone
 Cyrtopone_striata,Ponerinae,,Cyrtopone
 Discothyrea_gigas,Proceratiinae,Proceratiini,Discothyrea
 Discothyrea_maya,Proceratiinae,Proceratiini,Discothyrea
-Dlusskyidris_zherichini,,,Dlusskyidris
-Dolichoderinae,,,
-Dolichoderus_antiquus,Dolichoderinae,,Dolichoderus
-Dolichoderus_dlusskyi,Dolichoderinae,,Dolichoderus
-Dolichoderus_evolans,Dolichoderinae,,Dolichoderus
-Dolichoderus_explicans,Dolichoderinae,,Dolichoderus
 Dolichoderus_jiaoyanshanensis,Dolichoderinae,,Dolichoderus
 Dolichoderus_kohlsi,Dolichoderinae,,Dolichoderus
 Dolichoderus_kutschlinicus,Dolichoderinae,,Dolichoderus
@@ -271,13 +260,11 @@ Melissotarsus_ethiopiensis,Myrmicinae,Crematogastrini,Melissotarsus
 Messelepone_leptogenoides,Ponerinae,,Messelepone
 Messor,Myrmicinae,Stenammini,
 Messor_sculpturatus,Myrmicinae,Stenammini,Messor
-Mianeuretus_eocenicus,Aneuretinae,,Mianeuretus
 Mianeuretus_mirabilis,Aneuretinae,,Mianeuretus
 Miomyrmex_impactus,Dolichoderinae,,Miomyrmex
 Miomyrmex_striatus,Dolichoderinae,,Miomyrmex
 Miosolenopsis_fossilis,Myrmicinae,,Miosolenopsis
 Myanmyrma_gracilis,,,Myanmyrma
-Myopopone_sinensis,Amblyoponinae,,Myopopone
 Myrmeciites,Myrmeciinae,,
 Myrmeciites_goliath,Myrmeciinae,Collective group name (page does not exist),Myrmeciites
 Myrmeciites_herculeanus,Myrmeciinae,Collective group name (page does not exist),Myrmeciites
@@ -317,7 +304,6 @@ Pachycondyla_oligocenica,Ponerinae,,Pachycondyla
 Pachycondyla_parvula,Ponerinae,,Pachycondyla
 Pachycondyla_petiolosa,Ponerinae,,Pachycondyla
 Pachycondyla_petrosa,Ponerinae,,Pachycondyla
-Paraneuretus_dubovikoffi,Aneuretinae,,Paraneuretus
 Paraphaenogaster_hooleyana,Myrmicinae,Stenammini,Paraphaenogaster
 Paraphaenogaster_jurinei,Myrmicinae,Stenammini,Paraphaenogaster
 Paraphaenogaster_tertiaria,Myrmicinae,Stenammini,Paraphaenogaster
@@ -395,7 +381,6 @@ Solenopsites_minutus,Myrmicinae,,Solenopsites
 Sphecomyrma,Sphecomyrminae,Sphecomyrmini,
 Sphecomyrma_freyi,Sphecomyrminae,Sphecomyrmini,Sphecomyrma
 Sphecomyrma_mesaki,Sphecomyrminae,Sphecomyrmini,Sphecomyrma
-Stigmatomma_groehni,Amblyoponinae,,Stigmatomma
 Strumigenys_electrina,Myrmicinae,Attini,Strumigenys
 Strumigenys_schleeorum,Myrmicinae,Attini,Strumigenys
 Taphopone_aberrans,Ponerinae,,Taphopone
