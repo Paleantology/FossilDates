@@ -64,8 +64,9 @@ Myrmicinae =clade( "Acanthognathus_ocellatus", "Acanthomyrmex_ferox", "Acromyrme
 Ponerinae =clade( "Anochetus_emarginatus", "Anochetus_madagascarensis", "Anochetus_mayri", "Austroponera_castanea", "Brachyponera_atrata", "Brachyponera_chinensis", "Brachyponera_sennaarensis", "Buniapone_amblyops", "Centromyrmex_brachycola", "Centromyrmex_feae", "Centromyrmex_hamulatus", "Centromyrmex_sellaris", "Cryptopone_gilva", "Cryptopone_sauteri", "Diacamma_rugosum", "Diacamma_sp", "Diacamma_sp_Indo1", "Dinoponera_australis", "Dinoponera_gigantea", "Emeryopone_buttelreepeni", "Euponera_sikorae", "Hagensia_havilandi", "Harpegnathos_saltator", "Harpegnathos_venator", "Hypoponera_inexorata", "Hypoponera_opacior", "Hypoponera_sakalava", "Hypoponera_sp_Mal1", "Hypoponera_sp_Mal2", "Hypoponera_sp_Mal3", "Leptogenys_attenuata", "Leptogenys_crassicornis", "Leptogenys_diminuta", "Leptogenys_falcigera", "Leptogenys_iridescens", "Leptogenys_occidentalis", "Leptogenys_sp", "Leptogenys_sp_Ecu1", "Loboponera_politula", "Mayaponera_constricta", "Megaponera_analis", "Mesoponera_ingesta", "Mesoponera_rubra", "Myopias_lobosa", "Myopias_sp_Mal1", "Myopias_tenuis", "Neoponera_aenescens", "Neoponera_apicalis", "Neoponera_carinulata", "Neoponera_commutata", "Neoponera_fauveli", "Neoponera_marginata", "Neoponera_unidentata", "Neoponera_villosa", "Odontomachus_cephalotes", "Odontomachus_clarus", "Odontomachus_coquereli", "Odontomachus_simillimus", "Odontoponera_transversa", "Ophthalmopone_berthoudi", "Pachycondyla_crassinoda", "Pachycondyla_harpax", "Pachycondyla_impressa", "Pachycondyla_sp_CAR1", "Pachycondyla_sp_JTL011", "Pachycondyla_sp_Mal1", "Pachycondyla_sp_Mal2", "Pachycondyla_sp_Mal3", "Paltothyreus_tarsatus", "Phrynoponera_gabonensis", "Platythyrea_lamellosa", "Platythyrea_mocquerysi", "Platythyrea_punctata", "Platythyrea_quadridenta", "Platythyrea_strenua", "Platythyrea_turneri", "Plectroctena_minor", "Plectroctena_ugandensis", "Ponera_pennsylvanica", "Ponera_sp_Mal1", "Psalidomyrmex_procerus", "Pseudoneoponera_rufipes", "Pseudoponera_stigma", "Simopelta_cf_pergandei", "Simopelta_sp_Ecu1", "Simopelta_sp_Ecu2", "Simopelta_sp_JTL001", "Streblognathus_peetersi", "Thaumatomyrmex_atrox", "Thaumatomyrmex_sp_Bra1" ) 
 Proceratiinae =clade( "Discothyrea_MAD07", "Discothyrea_sp", "Probolomyrmex_sp", "Probolomyrmex_tani", "Proceratium_MAD08", "Proceratium_sp1", "Proceratium_stictum" ) 
 Pseudomyrmecinae =clade( "Myrcidris_epicharis", "Pseudomyrmex_apache", "Pseudomyrmex_gracilis", "Tetraponera_punctulata", "Tetraponera_rufonigra", "Tetraponera_sp" ) 
-constraints = v(Agroecomyrmecinae,Amblyoponinae,Aneuretinae,Dolichoderinae,Dorylinae,Ectatomminae,Formicinae,Myrmeciinae,Myrmicinae,Ponerinae,Proceratiinae,Pseudomyrmecinae)
-
+sphecom = clade("Haidomyrmex_zigrasi","Gerontoformica_magnus","Gerontoformica_gracilis","Gerontoformica_pilosus","Gerontoformica_spiralis","Haidomyrmex_scimitarus","Haidomyrmodes_mammuthus","Haidoterminus_cippus","Sphecomyrma_freyi","Zigrasimecia_sp","Camelomecia_janovitzi")
+constraints = v(sphecom, Agroecomyrmecinae,Amblyoponinae,Aneuretinae,Dolichoderinae,Dorylinae,Ectatomminae,Formicinae,Myrmeciinae,Myrmicinae,Ponerinae,Proceratiinae,Pseudomyrmecinae)
+#constraints =  v(Agroecomyrmecinae, Dolichoderinae)
 fbd_tree ~ dnConstrainedTopology(fbd_dist, constraints=constraints)
 
 # Specify moves on the tree and node times #
@@ -78,26 +79,21 @@ moves[mvi++] = mvCollapseExpandFossilBranch(fbd_tree, origin_time, weight=6.0)
 moves[mvi++] = mvNodeTimeSlideUniform(fbd_tree, weight=40.0)
 moves[mvi++] = mvRootTimeSlideUniform(fbd_tree, origin_time, weight=5.0)
 
-
-### Use stratigraphic range data to explicitly sample the fossil occurence times ###
-# Read in the stratigraphic range data file #
-intervals = readDataDelimitedFile(file="intervals.tsv", header=true)
-
 # Setup the fossil tip sampling #
 # Use a for loop to create a uniform distribution on the occurence time for each fossil #
 # The boundaries of the uniform distribution are specified in the tsv file #
-for(i in 1:intervals.size())
+fossils = fbd_tree.getFossils()
+for(i in 1:fossils.size())
 {
-    taxon  = intervals[i][1]
-    a_i = intervals[i][2]
-    b_i = intervals[i][3]
+    t[i] := tmrca(fbd_tree, clade(fossils[i]))
 
-    t[i] := tmrca(fbd_tree, clade(taxon))
+    a_i = fossils[i].getMinAge()
+    b_i = fossils[i].getMaxAge()
 
-    fossil[i] ~ dnUniform(t[i] - b_i, t[i] - a_i)
-    fossil[i] ~ dnSoftBoundUniformNormal(t[i] - b_i, t[i] - a_i, sd = 2, p = 0.025)
-    fossil[i].clamp( 0 )
+    F[i] ~ dnUniform(b_i, a_i)
+#    F[i].clamp( 0 )
 }
+
 
 # Add a move to sample the fossil times #
 moves[mvi++] = mvFossilTimeSlideUniform(fbd_tree, origin_time, weight=5.0)
@@ -106,6 +102,13 @@ moves[mvi++] = mvFossilTimeSlideUniform(fbd_tree, origin_time, weight=5.0)
 ### Create deterministic nodes to monitor various tree statistics ###
 # Monitor the number of sampled ancestors in the FBD-tree #
 num_samp_anc := fbd_tree.numSampledAncestors();
+
+
+
+
+
+
+
 
 
 
