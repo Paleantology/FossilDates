@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -q workq
+#PBS -l nodes=1:ppn=20
+#PBS -l walltime=24:00:00
+#PBS -N FBD8 
+#PBS -o FBD8.out
+#PBS -j oe
+#PBS -A loni_antlabsumm 
+#PBS -m abe
+#PBS -M april.wright@selu.edu   
+
+
+module load gcc
+
+(datapath=/work/amwright/FossilDates/Data/8
+cd $datapath
+~/rb-mpi -np 12 mcmc_tylertest.Rev) 
+
