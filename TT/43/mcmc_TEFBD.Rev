@@ -9,15 +9,15 @@
 ################################################################################
 
 #######################
-# Reading in the ../Data #
+# Reading in the ../../Data #
 #######################
 seed(1234)
 # Create the full list of taxa (including all fossils and extant species #
 taxa <- readTaxonData("taxa.tsv")
 
-filenames <- v("../Data/Mol/18s.aln.nex", "../Data/Mol/28s.aln.nex", "../Data/Mol/ABD.aln.nex",
-"../Data/Mol/Arg.aln.nex", "../Data/Mol/CAD.aln.nex", "../Data/Mol/EF1.aln.nex", "../Data/Mol/EF2.aln.nex",
-"../Data/Mol/lg.aln.nex")
+filenames <- v("../../Data/Mol/18s.aln.nex", "../../Data/Mol/28s.aln.nex", "../../Data/Mol/ABD.aln.nex",
+"../../Data/Mol/Arg.aln.nex", "../../Data/Mol/CAD.aln.nex", "../../Data/Mol/EF1.aln.nex", "../../Data/Mol/EF2.aln.nex",
+"../../Data/Mol/lg.aln.nex")
 
 n_data_subsets <- filenames.size()
 for (i in 1:n_data_subsets) {
@@ -26,7 +26,7 @@ for (i in 1:n_data_subsets) {
 
 # Import the morphological character matrix #
 # this file contains only the taxa for which morphological characters are available #
-morpho <- readDiscreteCharacterData("../Data/Morph/AntMegaMatrixMinusAmbig.nex")
+morpho <- readDiscreteCharacterData("../../Data/Morph/AntMegaMatrixMinusAmbig.nex")
 
 # Add the missing taxa to each data partition #
 for (i in 1:n_data_subsets) {
@@ -62,7 +62,7 @@ mni = 1
 # Create a vector of monitors #
 # 1. for the full model #
 monitors[mni++] = mnModel(filename="output/ants.log", printgen=10)
-monitors[mni++] = mnStochasticVariable(filename="../output/mcmc-stoch.log", printgen=10)
+monitors[mni++] = mnStochasticVariable(filename="output/mcmc-stoch.log", printgen=10)
 
 # 2. the tree #
 monitors[mni++] = mnFile(filename="output/ants.trees", printgen=10, fbd_tree)
