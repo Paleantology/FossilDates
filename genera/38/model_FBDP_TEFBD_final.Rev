@@ -1,0 +1,150 @@
+##########################################################################################
+# Joint Fossilized Birth-Death Process prior on the topology and fossil occurrence times #
+##########################################################################################
+
+
+# Define a exponential priors on the birth rate and death rate #
+speciation_rate ~ dnExponential(10)
+extinction_rate ~ dnExponential(10)
+
+# Specify a scale move on the speciation_rate parameter #
+# This move will be applied with 3 different tuning values (lambda) to help improve mixing #
+moves[mvi++] = mvScale(speciation_rate, lambda=0.01, weight=1)
+moves[mvi++] = mvScale(speciation_rate, lambda=0.1,  weight=1)
+moves[mvi++] = mvScale(speciation_rate, lambda=1.0,  weight=1)
+
+# Specify a sliding-window move on the extinction_rate parameter #
+# This move will be applied with 3 different window widths (delta) to help improve mixing #
+moves[mvi++] = mvScale(extinction_rate, lambda=0.01, weight=1)
+moves[mvi++] = mvScale(extinction_rate, lambda=0.1,  weight=1)
+moves[mvi++] = mvScale(extinction_rate, lambda=1,    weight=1)
+
+# Create deterministic nodes for the diversification and turnover rates so that they can be monitored #
+diversification := speciation_rate - extinction_rate
+turnover := extinction_rate/speciation_rate
+
+# Fix the probability of sampling parameter (rho) to 1, #
+# because all extant bears are represented in this analysis #
+rho <- 0.046
+
+# Assume an exponential prior on the rate of sampling fossils (psi) #
+psi ~ dnExponential(10)
+
+# Specify a scale move on the psi parameter #
+# This move will be applied with 3 different tuning values (lambda) to help improve mixing #
+moves[mvi++] = mvScale(psi, lambda=0.01, weight=1)
+moves[mvi++] = mvScale(psi, lambda=0.1,  weight=1)
+moves[mvi++] = mvScale(psi, lambda=1,    weight=1)
+
+# The FBD is conditioned on a starting time for the process, which is the origin time #
+# Specify a uniform prior on the origin #
+origin_time ~ dnUnif(100.0, 200.0)
+
+# Specify a sliding-window move on the origin_time parameter #
+# This move will be applied with 3 different window widths (delta) to help improve mixing #
+moves[mvi++] = mvSlide(origin_time, delta=0.01, weight=5.0)
+moves[mvi++] = mvSlide(origin_time, delta=0.1,  weight=5.0)
+moves[mvi++] = mvSlide(origin_time, delta=1,    weight=5.0)
+
+
+### Define the tree-prior distribution as the fossilized birth-death process ###
+fbd_dist = dnFBDP(origin=origin_time, lambda=speciation_rate, mu=extinction_rate, psi=psi, rho=rho, taxa=taxa)
+
+# The will be a random variable of a constrained topology distribution that is governed by the FBD #
+# this distribution will generate FBD trees that match the monophyly constraints defined above #
+Acanthognathus =clade( "Acanthognathus_ocellatus" ) 
+Acanthostichus =clade( "Acanthostichus_davisi", "Acanthostichus_kirbyi", "Acanthostichus_punctiscapus" ) 
+Anochetus =clade( "Anochetus_emarginatus", "Anochetus_madagascarensis", "Anochetus_mayri" ) 
+Aphaenogaster =clade( "Aphaenogaster_albisetosa", "Aphaenogaster_araneoides", "Aphaenogaster_occidentalis", "Aphaenogaster_pythia", "Aphaenogaster_swammerdami", "Aphaenogaster_texana" ) 
+Apterostigma =clade( "Apterostigma_auriculatum", "Apterostigma_sp" ) 
+Austroponera =clade( "Austroponera_castanea" ) 
+Camponotus =clade( "Camponotus_BCA01", "Camponotus_conithorax", "Camponotus_hyatti", "Camponotus_maritimus", "Camponotus_ocreatus" ) 
+Carebara =clade( "Carebara_affinis", "Carebara_alperti", "Carebara_AU01", "Carebara_nosindambo", "Carebara_sp", "Carebara_sp_2", "Carebara_sp_3", "Carebara_urichi", "Carebara_vidua" ) 
+Cataulacus =clade( "Cataulacus_ebrardi", "Cataulacus_hispidulus", "Cataulacus_MAD02", "Cataulacus_sp" ) 
+Cephalotes =clade( "Cephalotes_atratus", "Cephalotes_texanus", "Cephalotes_unimaculatus", "Cerapachys_augustae" ) 
+Cyphomyrmex =clade( "Cyphomyrmex_cornutus", "Cyphomyrmex_longiscapus_cf", "Cyphomyrmex_sp" ) 
+Discothyrea =clade( "Discothyrea_MAD07", "Discothyrea_sp" ) 
+Dolichoderus =clade( "Dolichoderus_debilis", "Dolichoderus_decollatus", "Dolichoderus_erectilobus", "Dolichoderus_imitator", "Dolichoderus_lamellosus", "Dolichoderus_pustulatus", "Dolichoderus_scabridus" ) 
+Ectatomma =clade( "Ectatomma_opaciventre", "Ectatomma_quadridens" ) 
+Formica =clade( "Formica_moki", "Formica_wheeleri" ) 
+Gnamptogenys =clade( "Gnamptogenys_sp", "Gnamptogenys_striatula" ) 
+Iridomyrmex =clade( "Iridomyrmex_AU01", "Iridomyrmex_pallidus", "Iridomyrmex_sanguineus", "Iridomyrmex_spadius" ) 
+Lasius =clade( "Lasius_alienus", "Lasius_californicus", "Lasius_latipes" ) 
+Leptogenys =clade( "Leptogenys_attenuata", "Leptogenys_crassicornis", "Leptogenys_diminuta", "Leptogenys_falcigera", "Leptogenys_iridescens", "Leptogenys_occidentalis", "Leptogenys_sp", "Leptogenys_sp_Ecu1" ) 
+Leptomyrmex =clade( "Leptomyrmex_AU01", "Leptomyrmex_AUS01", "Leptomyrmex_erythrocephalus", "Leptomyrmex_sp" ) 
+Liometopum =clade( "Liometopum_apiculatum", "Liometopum_luctuosum", "Liometopum_occidentale" ) 
+Melissotarsus =clade( "Melissotarsus_insularis" ) 
+Messor =clade( "Messor_denticornis", "Messor_wasmanni" ) 
+Myopopone =clade( "Myopopone_castanea" ) 
+Myrmecorhynchus =clade( "Myrmecorhynchus_sp" ) 
+Myrmica =clade( "Myrmica_incompleta", "Myrmica_kotokui", "Myrmica_rugiventris", "Myrmica_striolagaster", "Myrmica_tahoensis" ) 
+Nesomyrmex =clade( "Nesomyrmex_echinatinodis", "Nesomyrmex_madecassus", "Nesomyrmex_MG01", "Nesomyrmex_MG08", "Nesomyrmex_wilda" ) 
+Odontomachus =clade( "Odontomachus_cephalotes", "Odontomachus_clarus", "Odontomachus_coquereli", "Odontomachus_simillimus", "Odontoponera_transversa" ) 
+Oecophylla =clade( "Oecophylla_smaragdina" ) 
+Pachycondyla =clade( "Pachycondyla_crassinoda", "Pachycondyla_harpax", "Pachycondyla_impressa", "Pachycondyla_sp_CAR1", "Pachycondyla_sp_JTL011", "Pachycondyla_sp_Mal1", "Pachycondyla_sp_Mal2", "Pachycondyla_sp_Mal3" ) 
+Pheidole =clade( "Pheidole_antipodum", "Pheidole_clydei", "Pheidole_dispar", "Pheidole_fimbriata", "Pheidole_hyatti", "Pheidole_longispinosa", "Pheidole_lucioccipitalis", "Pheidole_pallidula", "Pheidole_rhea" ) 
+Plagiolepis =clade( "Plagiolepis_sp" ) 
+Platythyrea =clade( "Platythyrea_lamellosa", "Platythyrea_mocquerysi", "Platythyrea_punctata", "Platythyrea_quadridenta", "Platythyrea_strenua", "Platythyrea_turneri" ) 
+Podomyrma =clade( "Podomyrma_silvicola", "Podomyrma_sp" ) 
+Pogonomyrmex =clade( "Pogonomyrmex_angustus", "Pogonomyrmex_imberbiculus", "Pogonomyrmex_maricopa", "Pogonomyrmex_striatinodus", "Pogonomyrmex_subdentatus", "Pogonomyrmex_vermiculatus" ) 
+Ponera =clade( "Ponera_pennsylvanica", "Ponera_sp_Mal1" ) 
+Pristomyrmex =clade( "Pristomyrmex_orbiceps", "Pristomyrmex_punctatus", "Pristomyrmex_sp" ) 
+Proceratium =clade( "Proceratium_MAD08", "Proceratium_sp1", "Proceratium_stictum" ) 
+Pseudomyrmex =clade( "Pseudomyrmex_apache", "Pseudomyrmex_gracilis" ) 
+Rhytidoponera =clade( "Rhytidoponera_chalybaea", "Rhytidoponera_metallica" ) 
+Solenopsis =clade( "Solenopsis_fugax", "Solenopsis_invicta", "Solenopsis_mameti", "Solenopsis_molesta", "Solenopsis_PA01", "Solenopsis_papuana", "Solenopsis_succinea", "Solenopsis_xyloni", "Solenopsis_ZA02" ) 
+Stigmatomma =clade( "Stigmatomma_pallipes" ) 
+Strumigenys =clade( "Strumigenys_ambatrix", "Strumigenys_biolleyi", "Strumigenys_chiricahua", "Strumigenys_chyzeri", "Strumigenys_coveri", "Strumigenys_dicomas", "Strumigenys_emmae", "Strumigenys_erynnes", "Strumigenys_exiguaevitae", "Strumigenys_godeffroyi", "Strumigenys_gundlachi", "Strumigenys_hoplites", "Strumigenys_ludovici", "Strumigenys_maxillaris", "Strumigenys_membranifera", "Strumigenys_nitens", "Strumigenys_ocypete", "Strumigenys_olsoni", "Strumigenys_pulchella", "Strumigenys_rogeri", "Strumigenys_sp" ) 
+Tapinoma =clade( "Tanipone_zona", "Tapinoma_melanocephalum", "Tapinoma_MG03", "Tapinoma_opacum", "Tapinoma_sessile" ) 
+Technomyrmex =clade( "Technomyrmex_albipes", "Technomyrmex_anterops", "Technomyrmex_difficilis", "Technomyrmex_MAD05", "Technomyrmex_voeltzkowi" ) 
+Temnothorax =clade( "Temnothorax_bernardi", "Temnothorax_kutteri", "Temnothorax_poeyi", "Temnothorax_rugatulus", "Temnothorax_tricarinatus" ) 
+Tetramorium =clade( "Tetramorium_atratulum", "Tetramorium_caespitum_cf", "Tetramorium_CF01", "Tetramorium_hispidum", "Tetramorium_kutteri", "Tetramorium_MG125", "Tetramorium_severini", "Tetramorium_spinosum", "Tetramorium_taylori", "Tetramorium_transversinodis", "Tetramorium_validiusculum", "Tetramorium_venator" ) 
+Trachymyrmex =clade( "Trachymyrmex_arizonensis", "Trachymyrmex_jamaicensis" ) 
+
+fbd_tree ~ dnConstrainedTopology(fbd_dist, constraints=constraints)
+
+# Specify moves on the tree and node times #
+# These moves update the tree topology
+moves[mvi++] = mvFNPR(fbd_tree, weight=15.0)
+moves[mvi++] = mvCollapseExpandFossilBranch(fbd_tree, origin_time, weight=6.0)
+
+# These moves update the node ages #
+# Because we are conditioning on the origin time, we must also sample the root node age #
+moves[mvi++] = mvNodeTimeSlideUniform(fbd_tree, weight=40.0)
+moves[mvi++] = mvRootTimeSlideUniform(fbd_tree, origin_time, weight=5.0)
+
+
+### Use stratigraphic range data to explicitly sample the fossil occurence times ###
+# Read in the stratigraphic range data file #
+intervals = readDataDelimitedFile(file="intervals.tsv", header=true)
+
+# Setup the fossil tip sampling #
+# Use a for loop to create a uniform distribution on the occurence time for each fossil #
+# The boundaries of the uniform distribution are specified in the tsv file #
+for(i in 1:intervals.size())
+{
+    taxon  = intervals[i][1]
+    a_i = intervals[i][2]
+    b_i = intervals[i][3]
+
+    t[i] := tmrca(fbd_tree, clade(taxon))
+
+    fossil[i] ~ dnUniform(t[i] - b_i, t[i] - a_i)
+    fossil[i] ~ dnSoftBoundUniformNormal(t[i] - b_i, t[i] - a_i, sd = 2, p = 0.025)
+}
+
+# Add a move to sample the fossil times #
+moves[mvi++] = mvFossilTimeSlideUniform(fbd_tree, origin_time, weight=5.0)
+
+
+### Create deterministic nodes to monitor various tree statistics ###
+# Monitor the number of sampled ancestors in the FBD-tree #
+num_samp_anc := fbd_tree.numSampledAncestors();
+
+
+
+# Monitor the age of a particular fossil #
+#age_Kretzoiarctos_beatrix   := tmrca(fbd_tree, clade("Kretzoiarctos_beatrix"))
+
+# Monitor the tree, pruning fossil taxa for which we do not have morphological or molecular data #
+#pruned_tree := fnPruneTree(fbd_tree, pruneTaxa=v("Ursus_abstrusus","Parictis_montanus"))
