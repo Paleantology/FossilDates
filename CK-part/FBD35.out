@@ -1,0 +1,177 @@
+--------------------------------------
+Running PBS prologue script
+--------------------------------------
+User and Job Data:
+--------------------------------------
+Job ID:    675096.qb3
+Username:  kolbmann
+Group:     sususers
+Date:      29-Jul-2019 13:50
+Node:      qb241 (94938)
+--------------------------------------
+PBS has allocated the following nodes:
+
+qb241
+
+A total of 20 processors on 1 nodes allocated
+---------------------------------------------
+Check nodes and clean them of stray processes
+---------------------------------------------
+Checking node qb241 13:50:39 
+Done clearing all the allocated nodes
+------------------------------------------------------
+Concluding PBS prologue script - 29-Jul-2019 13:50:39
+------------------------------------------------------
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+> source("mcmc_TEFBD.Rev")
+> source("mcmc_TEFBD.Rev")
+> source("mcmc_TEFBD.Rev")
+> source("mcmc_TEFBD.Rev")
+> source("mcmc_TEFBD.Rev")
+   Processing file "mcmc_TEFBD.Rev"
+   Successfully read one character matrix from file '../../Data/Mol/18s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/28s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/ABD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/Arg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/CAD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF1.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF2.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/lg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Morph/AntMegaMatrixMinusAmbig.nex'
+   Processing file "model_FBDP_TEFBD_final.Rev"
+   Error:	Argument label 'phi' matches no untaken parameter labels.
+   Error:	Problem processing line 51 in file "model_FBDP_TEFBD_final.Rev"
+   Error:	Problem processing line 44 in file "mcmc_TEFBD.Rev"
+>    Processing file "mcmc_TEFBD.Rev"
+   Successfully read one character matrix from file '../../Data/Mol/18s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/28s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/ABD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/Arg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/CAD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF1.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF2.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/lg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Morph/AntMegaMatrixMinusAmbig.nex'
+   Processing file "model_FBDP_TEFBD_final.Rev"
+   Error:	Argument label 'phi' matches no untaken parameter labels.
+   Error:	Problem processing line 51 in file "model_FBDP_TEFBD_final.Rev"
+   Error:	Problem processing line 44 in file "mcmc_TEFBD.Rev"
+>    Processing file "mcmc_TEFBD.Rev"
+   Successfully read one character matrix from file '../../Data/Mol/18s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/28s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/ABD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/Arg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/CAD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF1.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF2.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/lg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Morph/AntMegaMatrixMinusAmbig.nex'
+   Processing file "model_FBDP_TEFBD_final.Rev"
+   Error:	Argument label 'phi' matches no untaken parameter labels.
+   Error:	Problem processing line 51 in file "model_FBDP_TEFBD_final.Rev"
+   Error:	Problem processing line 44 in file "mcmc_TEFBD.Rev"
+>    Processing file "mcmc_TEFBD.Rev"
+   Successfully read one character matrix from file '../../Data/Mol/18s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/28s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/ABD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/Arg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/CAD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF1.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF2.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/lg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Morph/AntMegaMatrixMinusAmbig.nex'
+   Processing file "model_FBDP_TEFBD_final.Rev"
+   Error:	Argument label 'phi' matches no untaken parameter labels.
+   Error:	Problem processing line 51 in file "model_FBDP_TEFBD_final.Rev"
+   Error:	Problem processing line 44 in file "mcmc_TEFBD.Rev"
+>    Processing file "mcmc_TEFBD.Rev"
+   Successfully read one character matrix from file '../../Data/Mol/18s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/28s.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/ABD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/Arg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/CAD.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF1.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/EF2.aln.nex'
+   Successfully read one character matrix from file '../../Data/Mol/lg.aln.nex'
+   Successfully read one character matrix from file '../../Data/Morph/AntMegaMatrixMinusAmbig.nex'
+   Processing file "model_FBDP_TEFBD_final.Rev"
+   Error:	Argument label 'phi' matches no untaken parameter labels.
+   Error:	Problem processing line 51 in file "model_FBDP_TEFBD_final.Rev"
+   Error:	Problem processing line 44 in file "mcmc_TEFBD.Rev"
+> =>> PBS: job killed: walltime 259209 exceeded limit 259200
+------------------------------------------------------
+Running PBS epilogue script    - 01-Aug-2019 13:50:47
+------------------------------------------------------
+Checking node qb241 (MS)
+Checking node qb241 ok
+------------------------------------------------------
+Concluding PBS epilogue script - 01-Aug-2019 13:50:49
+------------------------------------------------------
+Exit Status:     271
+Job ID:          675096.qb3
+Username:        kolbmann
+Group:           sususers
+Job Name:        FBD35
+Session Id:      94937
+Resource Limits: ncpus=1,neednodes=1:ppn=20,nodes=1:ppn=20,walltime=72:00:00
+Resources Used:  cput=00:00:00,mem=9248kb,vmem=320256kb,walltime=72:00:10
+Queue Used:      workq
+Account String:  loni_antfbe
+Node:            qb241
+Process id:      19687
+Last status:     01-Aug-2019:13:05 PBS_job=675096.qb3 user=kolbmann allocation=loni_antfbe queue=workq total_load=1.00 cpu_hours=70.28 wall_hours=70.23 unused_nodes=0 total_nodes=1 ppn=20 avg_load=1.00 avg_cpu=100% avg_mem=2939mb avg_vmem=3423mb top_proc=kolbmann:hydra_pmi_proxy:qb241:94M:6M:70.2hr:100% toppm=kolbmann:rb:qb241:754M:731M node_processes=9 avg_avail_mem=59667mb min_avail_mem=59667mb reverified_avg_load=1.04
+------------------------------------------------------

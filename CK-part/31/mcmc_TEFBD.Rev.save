@@ -1,0 +1,80 @@
+################################################################################
+#
+# RevBayes Example: Total-evidence dating under the fossilized birth-death model
+#
+# This file: Runs the full MCMC ...
+#
+# authors: Tracy A. Heath, Walker C. Pett, April M. Wright
+#
+################################################################################
+
+#######################
+# Reading in the ../Data #
+#######################
+seed(1234)
+# Create the full list of taxa (including all fossils and extant species #
+taxa <- readTaxonData("taxa.tsv")
+
+filenames <- v("../../Data/Mol/18s.aln.nex", "../../Data/Mol/28s.aln.nex", "../../Data/Mol/ABD.aln.nex",
+"../../Data/Mol/Arg.aln.nex", "../../Data/Mol/CAD.aln.nex", "../../Data/Mol/EF1.aln.nex", "../../Data/Mol/EF2.aln.nex",
+"../../Data/Mol/lg.aln.nex")
+
+n_data_subsets <- filenames.size()
+for (i in 1:n_data_subsets) {
+   data[i] = readDiscreteCharacterData(filenames[i])
+}
+
+# Import the morphological character matrix #
+# this file contains only the taxa for which morphological characters are available #
+morpho <- readDiscreteCharacterData("../../Data/Morph/AntMegaMatrixMinusAmbig.nex")
+
+# Add the missing taxa to each data partition #
+for (i in 1:n_data_subsets) {
+    data[i].addMissingTaxa( taxa )
+}
+
+morpho.addMissingTaxa( taxa )
+
+## helpers
+mvi = 1
+n_taxa <- taxa.size()
+
+# Load the model files
+
+source("model_FBDP_TEFBD_final.Rev") # FBD tree prior
+
+source("model_UExp_TEFBD.Rev") # UExp relaxed clock
+
+source("model_GTRG_TEFBD.Rev") # Molecular substitution model (GTR+G)
+
+source("model_Morph_TEFBD.Rev") # Morphological character change model
+
+
+########
+# MCMC #
+########
+
+# initialize the model object #
+mymodel = model(sf)
+
+mni = 1
+
+# Create a vector of monitors #
+# 1. for the full model #
+monitors[mni++] = mnModel(filename="/work/kolbmann/FossilDates/CK/31/output/ants.log", printgen=10)
+monitors[mni++] = mnStochasticVariable(filename="output/mcmc-stoch.log", printgen=10)
+
+# 2. the tree #
+monitors[mni++] = mnFile(filename="output/ants.trees", printgen=10, fbd_tree)
+# 3. and a few select parameters to be printed to the screen #
+monitors[mni++] = mnScreen(printgen=10, num_samp_anc, origin_time)
+
+# Initialize the MCMC object #
+mymcmc = mcmc(mymodel, monitors, moves)
+#trace = readStochasticVariableTrace(file="output/mcmc-stoch.log")
+#mymcmc.initializeFromTrace(trace)
+# Run the MCMC #
+mymcmc.run(generations=100000)
+
+# Quit RevBayes #
+q()

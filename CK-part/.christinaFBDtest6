@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -q bigmem
+#PBS -l nodes=1:ppn=24
+#PBS -l walltime=24:00:00
+#PBS -N FBD31 
+#PBS -o FBD31.out
+#PBS -j oe
+#PBS -A loni_spring2019 
+#PBS -m abe
+#PBS -M christina.kolbmann@selu.edu   
+
+
+module load gcc
+
+(datapath=/work/kolbmann/FossilDates/CK/31
+cd $datapath
+mpirun -np 12 ~/rb mcmc_TEFBD.Rev) 
+

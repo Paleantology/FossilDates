@@ -1,0 +1,111 @@
+--------------------------------------
+Running PBS prologue script
+--------------------------------------
+User and Job Data:
+--------------------------------------
+Job ID:    680228.qb3
+Username:  kolbmann
+Group:     sususers
+Date:      06-Aug-2019 13:55
+Node:      qb149 (71718)
+--------------------------------------
+PBS has allocated the following nodes:
+
+qb149
+
+A total of 20 processors on 1 nodes allocated
+---------------------------------------------
+Check nodes and clean them of stray processes
+---------------------------------------------
+Checking node qb149 13:55:21 
+Done clearing all the allocated nodes
+------------------------------------------------------
+Concluding PBS prologue script - 06-Aug-2019 13:55:21
+------------------------------------------------------
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+
+RevBayes version (1.0.10)
+Build from master (2779ae) on Tue Apr 16 15:19:59 CDT 2019
+
+Visit the website www.RevBayes.com for more information about RevBayes.
+
+RevBayes is free software released under the GPL license, version 3. Type 'license()' for details.
+
+To quit RevBayes type 'quit()' or 'q()'.
+
+
+> source("mcmc_TEFBD.Rev")
+> source("mcmc_TEFBD.Rev")
+> source("mcmc_TEFBD.Rev")
+> source("mcmc_TEFBD.Rev")
+> source("mcmc_TEFBD.Rev")
+=>> PBS: job killed: walltime 620 exceeded limit 600
+------------------------------------------------------
+Running PBS epilogue script    - 06-Aug-2019 14:05:45
+------------------------------------------------------
+Checking node qb149 (MS)
+-> Killing process of kolbmann: [rb]
+-> Killing process of kolbmann: [rb]
+-> Killing process of kolbmann: [rb]
+-> Killing process of kolbmann: [rb]
+-> Killing process of kolbmann: [rb]
+Checking node qb149 ok
+------------------------------------------------------
+Concluding PBS epilogue script - 06-Aug-2019 14:05:49
+------------------------------------------------------
+Exit Status:     271
+Job ID:          680228.qb3
+Username:        kolbmann
+Group:           sususers
+Job Name:        FBD31
+Session Id:      71717
+Resource Limits: ncpus=1,neednodes=1:ppn=20,nodes=1:ppn=20,walltime=00:10:00
+Resources Used:  cput=00:00:00,mem=9244kb,vmem=320256kb,walltime=00:10:20
+Queue Used:      workq
+Account String:  loni_antfbe
+Node:            qb149
+Process id:      72362
+------------------------------------------------------

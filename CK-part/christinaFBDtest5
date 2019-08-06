@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -q workq
+#PBS -l nodes=1:ppn=20
+#PBS -l walltime=72:00:00
+#PBS -N FBD35
+#PBS -o FBD35.out
+#PBS -j oe
+#PBS -A loni_antfbe
+#PBS -m abe
+#PBS -M christina.kolbmann@selu.edu
+
+
+module load gcc
+
+datapath=/work/kolbmann/FossilDates/CK-part/35
+cd $datapath
+mpirun -np 5 ~/rb mcmc_TEFBD.Rev
